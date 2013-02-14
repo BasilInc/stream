@@ -4,9 +4,19 @@
   "version": "0.0.0",
   "main": "./server.js",
   "dependencies": {
-    "derby": "*",
-    "express": "3.0.0beta4",
-    "gzippo": ">=0.1.7"
+    "express"         : "3.0.0beta4",
+    "derby"           : "git://github.com/codeparty/derby#master",
+
+    "racer"           : "git://github.com/codeparty/racer#master",
+    "racer-db-mongo"  : "*",
+    "connect-mongo"   : ">=0.1.9",
+
+    "derby-auth"      : "git://github.com/lefnire/derby-auth#master",
+
+    "imap"            : "*",
+
+    "gzippo"          : ">=0.1.7",
+    "derby-ui-boot"   : "*"
   },
   "private": true
 }

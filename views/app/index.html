@@ -14,6 +14,9 @@
   Pre-defined templates are automatically included when the page is rendered.
 -->
 
+<import: src="auth">
+<import: src="home">
+
 <Title:>
   {{roomName}} - {_room.visits} visits
 
@@ -22,17 +25,14 @@
   <ui:connectionAlert>
 
 <Body:>
-  <h1>{_room.welcome}</h1>
-  <p><label>Welcome message: <input value="{_room.welcome}"></label></p>
-
-  <!-- Other templates are referenced like HTML elements -->
-  <p>This page has been visted {_room.visits} times. <app:timer></p>
-
-  <p>Let's go <a href="/{{randomUrl}}">somewhere random</a>.</p>
-
-<timer:>
-  {#if _stopped}
-    <a x-bind="click:start">Start timer</a>
-  {else}
-    You have been here for {_timer} seconds. <a x-bind="click:stop">Stop</a>
-  {/}
+  <div class="container">
+    <div class="row">
+      <div class="span8 offset2">
+        {#if _loggedIn}
+          <app:home:root>
+        {else}
+          <app:auth:login>
+        {/}
+      </div>
+    </div>
+  </div>
