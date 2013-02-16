@@ -18,16 +18,19 @@
 <import: src="home">
 
 <Title:>
-  {{roomName}} - {_room.visits} visits
+  Stream
 
 <Header:>
   <!-- This is a component defined in the /ui directory -->
   <ui:connectionAlert>
 
 <Body:>
-  <div class="container">
+  {#if _loggedIn}
+    <app:navbar>
+  {/}
+  <div class="container" id="container">
     <div class="row">
-      <div class="span8 offset2">
+      <div class="span12">
         {#if _loggedIn}
           <app:home:root>
         {else}
@@ -36,3 +39,25 @@
       </div>
     </div>
   </div>
+
+
+<navbar:>
+   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">Stream</a>
+          <div class="pull-right">
+            <ul class="nav">
+              <li ><a href="#" x-bind="click: setUnreading">Not Reading</a></li>
+              <li ><a href="/logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
