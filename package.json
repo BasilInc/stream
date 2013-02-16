@@ -14,6 +14,7 @@
     "derby-auth"      : "git://github.com/lefnire/derby-auth#master",
 
     "imap"            : "*",
+    "mailparser"      : "*",
 
     "gzippo"          : ">=0.1.7",
     "derby-ui-boot"   : "*"
