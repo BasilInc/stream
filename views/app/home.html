@@ -1,26 +1,28 @@
 <root:>
 	<div style="margin-bottom:20px;">
-		<h1>You are logged in</h1>
-		<a class="btn" href="/logout">Logout</a>
-		<!-- <a class="btn {#if _user.reading}disabled{/}" href="/email">Grab Emails</a> -->
-		<a class="btn btn-danger" href="#" x-bind="click: deleteEmails">Delete Emails</a>
-		<a class="btn btn-warning" href="#" x-bind="click: setUnreading">Not Reading</a>
+		<h1>Inbox</h1>
 	</div>
-	<div>
-		<form action="/email" method="post">
-			<input type="text" name="email" placeholder="Email">
-			<input type="password" name="password" placeholder="Password">
-			<input type="submit" value="Grab Emails" class="btn {#if _user.reading}disabled{/}" >
-		</form>
+
+	<div class="row">
+		<div class="span6">
+			<form action="/email" method="post">
+				<input type="text" name="email" placeholder="Email">
+				<input type="password" name="password" placeholder="Password">
+				<input type="submit" value="Grab Emails" class="btn {#if _user.reading}disabled{/}" >
+				<a class="btn btn-danger" style="margin-left:5px;" href="#" x-bind="click: deleteEmails">Delete Emails</a>
+			</form>
+		</div>
+		<div class="span6">
+			<p>Last read emails at {_user.emailsLastReadAt}</p>
+			<p>Reading: {_user.reading}</p>
+			<p>Total Messages: {_user.messages.length}</p>
+		</div>
 	</div>
-	<p>Last read emails at {_user.emailsLastReadAt}</p>
-	<p>Reading: {_user.reading}</p>
-	<p>Total Messages: {_user.messages.length}</p>
+	
 	<table class="table">
 		<tr>
 			<th>From</th>
 			<th>Subject</th>
-			<th>Content</th>
 			<th>Date</th>
 		</tr>
 		{#each _user.messages}
@@ -31,8 +33,7 @@
 
 <message:>
 	<tr>
-		<td>{.from}</td>
+		<td>{.from[0].name}</td>
 		<td>{.subject}</td>
-		<td>{.body}</td>
-		<td>{.date}</td>
+		<td>{.headers.date}</td>
 	</tr>
