@@ -1,9 +1,19 @@
 <root:>
+	{#if _user.reading}
+		<div class="row">
+			<div class="span6 offset3">
+				<div class="alert alert-success" style="text-align:center;">
+					Fetching Emails
+				</div>
+			</div>
+		</div>
+	{/}
+	
 	<div style="margin-bottom:20px;">
 		<h1>Inbox</h1>
 	</div>
 
-	<div class="row">
+	<div class="row" style="margin-bottom:10px;">
 		<div class="span6">
 			<form action="/email" method="post">
 				<input type="text" name="email" placeholder="Email">
@@ -14,21 +24,24 @@
 		</div>
 		<div class="span6">
 			<p>Last read emails at {_user.emailsLastReadAt}</p>
-			<p>Reading: {_user.reading}</p>
 			<p>Total Messages: {_user.messages.length}</p>
 		</div>
 	</div>
 	
-	<table class="table">
-		<tr>
-			<th>From</th>
-			<th>Subject</th>
-			<th>Date</th>
-		</tr>
-		{#each _user.messages}
-			<app:home:message>
-		{/}
-	</table>
+	<div class="row">
+		<div class="span12">
+			<table class="table">
+				<tr>
+					<th>From</th>
+					<th>Subject</th>
+					<th>Date</th>
+				</tr>
+				{#each _user.messages}
+					<app:home:message>
+				{/}
+			</table>
+		</div>
+	</div>
 
 
 <message:>
